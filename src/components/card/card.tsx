@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ICONS_PRIORITY, ICONS_STATUS } from "../../consts/icons";
+import { ICONS, ICONS_PRIORITY, ICONS_STATUS } from "../../consts/icons";
 import { CardModel } from "../../helpers/data";
 import { Chip } from "../chips/feature";
 import { Icon } from "../icon/icon";
@@ -15,7 +15,7 @@ export function Card({
   priority,
 }: CardModel) {
   const { statusIcon, priorityIcon, avatar } = useContext(KanbanContext);
-  console.log("Ava", avatar)
+  console.log("Ava", avatar);
   return (
     <div className="card">
       <div className="header">
@@ -29,11 +29,9 @@ export function Card({
         <div className="title">{title}</div>
       </div>
       <div className="bottom">
-        {priorityIcon && (
-          <div className="status">
-            <Icon url={ICONS_PRIORITY[priority]} />
-          </div>
-        )}
+        <div className="status">
+          <Icon url={priorityIcon ? ICONS_PRIORITY[priority] : ICONS.noP} />
+        </div>
         <div className="tags">
           {tags.map((tag, index) => (
             <Chip key={index} tag={`⬤ ${tag}`} />
