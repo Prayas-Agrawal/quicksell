@@ -28,10 +28,9 @@ function Main({ data }: MainProps) {
     ) as Dropdown_ordering;
     return savedState ?? "priority";
   });
-  const [statusIcon, setStatusIcon] = useState(false);
-  const [priorityIcon, setPriorityIcon] = useState(true);
-  const [avatar, setAvatar] = useState(true);
-
+  const [statusIcon, setStatusIcon] = useState((grouping != "status"));
+  const [priorityIcon, setPriorityIcon] = useState(grouping != "priority");
+  const [avatar, setAvatar] = useState(grouping != "user");
   useEffect(() => {
     localStorage.setItem("appContext_grouping", grouping);
   }, [grouping]);

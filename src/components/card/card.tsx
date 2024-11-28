@@ -15,7 +15,6 @@ export function Card({
   priority,
 }: CardModel) {
   const { statusIcon, priorityIcon, avatar } = useContext(KanbanContext);
-  console.log("Ava", avatar);
   return (
     <div className="card">
       <div className="header">
