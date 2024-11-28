@@ -1,0 +1,53 @@
+.subdropdown-container {
+  position: relative;
+  margin: 8px 0;
+}
+
+.subdropdown-toggle {
+  background: white;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  cursor: pointer;
+  text-align: left;
+  width: 100px;
+  display: flex;
+  gap: 4px;
+  color: black;
+  font-weight: 700;
+  justify-content: space-between;
+}
+
+.subdropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 40px;
+  width: 100%;
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  animation: fadeIn 0.08s ease-out;
+}
+
+.subdropdown-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  color: black;
+  font-weight: 500;
+}
+
+.subdropdown-item:hover {
+  background: #f0f0f0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
