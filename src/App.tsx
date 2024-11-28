@@ -1,35 +1,80 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import "./App.css";
+import { fetchData } from "./helpers/fetchers";
+import { Section } from "./components/section/section";
+import { DataModel } from "./helpers/data";
+import { Header } from "./components/header/header";
+import {
+  Dropdown_grouping,
+  Dropdown_ordering,
+  KanbanContext,
+} from "./helpers/contexts";
+
+const API = "https://api.quicksell.co/v1/internal/frontend-assignment";
+
+interface MainProps {
+  data: DataModel;
+}
+function Main({ data }: MainProps) {
+  const [grouping, setGrouping] = useState<Dropdown_grouping>(() => {
+    const savedState = localStorage.getItem(
+      "appContext_grouping"
+    ) as Dropdown_grouping;
+    return savedState ?? "status";
+  });
+  const [ordering, setOrdering] = useState<Dropdown_ordering>(() => {
+    const savedState = localStorage.getItem(
+      "appContext_ordering"
+    ) as Dropdown_ordering;
+    return savedState ?? "priority";
+  });
+  const [statusIcon, setStatusIcon] = useState(false);
+  const [priorityIcon, setPriorityIcon] = useState(true);
+  const [avatar, setAvatar] = useState(true);
+
+  useEffect(() => {
+    localStorage.setItem("appContext_grouping", grouping);
+  }, [grouping]);
+  useEffect(() => {
+    localStorage.setItem("appContext_ordering", ordering);
+  }, [ordering]);
+
+  return (
+    <KanbanContext.Provider
+      value={{
+        grouping,
+        ordering,
+        setGrouping,
+        setOrdering,
+        setPriorityIcon,
+        setStatusIcon,
+        setAvatar,
+        priorityIcon,
+        avatar,
+        statusIcon,
+      }}
+    >
+      <Header />
+      <Section tickets={data.tickets} />
+    </KanbanContext.Provider>
+  );
+}
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [data, setData] = useState<DataModel>();
+
+  useEffect(() => {
+    fetchData(API).then((d) => setData(d));
+  }, []);
+  if (!data) return <div>LOADING</div>;
 
   return (
     <>
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <Main data={data} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
