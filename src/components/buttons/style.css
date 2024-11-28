@@ -1,0 +1,19 @@
+.display-btn {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  width: min-content;
+  cursor: pointer;
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-width: 1px;
+  border-radius: 4px;
+  font-weight: 400;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.display-btn:hover {
+  background-color: #e0e0e0;
+}
