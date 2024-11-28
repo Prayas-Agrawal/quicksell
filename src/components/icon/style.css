@@ -1,0 +1,19 @@
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon-container .icon {
+  width: 16px;
+  height: 16px;
+  object-fit: cover;
+}
+
+
+.icon-container .user-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: gray;
+}
