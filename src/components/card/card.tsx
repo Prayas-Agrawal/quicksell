@@ -8,7 +8,6 @@ import { KanbanContext } from "../../helpers/contexts";
 
 export function Card({
   id,
-  user,
   title,
   tags,
   status,

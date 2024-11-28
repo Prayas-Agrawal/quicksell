@@ -35,8 +35,7 @@ function Header({ grouping_key, tickets, grouping }: HeaderProps) {
   if (grouping == "status") icon = ICONS_STATUS[grouping_key as status];
   if (grouping == "priority")
     icon = ICONS_PRIORITY_COLOR[grouping_key as number];
-  if (grouping == "user")
-    icon = get_avatar_url(tickets.length > 0 ? tickets[0].userId : null);
+  if (grouping == "user") icon = get_avatar_url(tickets.length > 0 ? tickets[0].userId : null);
   let title = grouping_key;
   if (grouping == "user") title = tickets[0].user.name;
   else if (grouping == "priority") title = num2priority(grouping_key as number);

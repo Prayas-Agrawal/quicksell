@@ -1,5 +1,3 @@
-import { Dropdown_grouping } from "./contexts";
-
 export type status = "In progress" | "Backlog" | "Todo";
 
 export interface Ticket {
