@@ -23,6 +23,7 @@ export function Header() {
     setPriorityIcon,
     setAvatar,
   } = useContext(KanbanContext);
+  
   const toggleDisplayDropdown = () => {
     setIsDisplayOpen(!isDisplayOpen);
     setIsGroupingOpen(false);

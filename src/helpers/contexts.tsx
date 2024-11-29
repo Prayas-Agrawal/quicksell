@@ -1,10 +1,13 @@
 import { createContext } from "react";
 
 export const Dropdown_grouping = ["status", "user", "priority"];
+
 export const Dropdown_ordering = ["priority", "title"];
 
 export type Dropdown_grouping = "status" | "user" | "priority";
+
 export type Dropdown_ordering = "priority" | "title";
+
 export const KanbanContext = createContext<{
   grouping: "status" | "user" | "priority";
   ordering: "priority" | "title";

@@ -27,6 +27,13 @@ html {
   font-family: "Roboto", sans-serif;
 }
 
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+
 .section-header {
   font-size: 16px;
   font-weight: 600;
@@ -50,8 +57,8 @@ html {
 }
 
 /* .section-header .left:hover {
-  text-decoration: underline;
-} */
+    text-decoration: underline;
+  } */
 
 .section-header .buttons {
   display: flex;
@@ -64,10 +71,4 @@ html {
   font-size: 16px;
   font-weight: 600;
   padding: 4px 8px;
-}
-
-.cards-container {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
 }
